@@ -5,9 +5,11 @@ import "./index.css";
 // import "./components/styles/GlobalStyle.scss";
 
 import App from "./App";
+import NavBar from "./components/layout/navigation/NavBar/NavBar";
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <NavBar />
       <App />
     </Router>
   </React.StrictMode>,

@@ -1,26 +1,5 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
-
-.btn {
-  @apply px-6 py-3 rounded-full shadow-md transition duration-300;
-}
-
-.btn-purple {
-  @apply text-white bg-bookmark-purple;
-}
-
-.btn-white {
-  @apply bg-bookmark-white;
-}
-section {
-  overflow-x: clip;
-}

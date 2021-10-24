@@ -1,19 +1,25 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Home } from "../pages";
+import { Customers, Home, Home2 } from "../pages";
 
 const ROUTES = [
-  { path: "/", key: "ROOT", exact: true, component: () => <Home /> },
+  // { path: "/", key: "ROOT", exact: true, component: () => <Home2 /> },
   {
-    path: "/app",
+    path: "/",
     key: "APP",
     component: RenderRoutes, // here's the update
     routes: [
       {
-        path: "/app",
+        path: "/",
         key: "APP_ROOT",
         exact: true,
-        component: () => <h1>App Index</h1>,
+        component: () => <Home2 />,
+      },
+      {
+        path: "/customers",
+        key: "APP_CUSTOMERS",
+        exact: true,
+        component: () => <Customers />,
       },
       {
         path: "/app/page",
