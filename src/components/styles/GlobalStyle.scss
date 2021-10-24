@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --clr-1: #2b2d42;
+  --clr-2: #e86a92;
+  --clr-3: #ffda41;
+  --clr-4: #f7f7f9;
+  --clr-5: #3f51b5;
+  --clr-6: #c1666b;
+
+  --dark80: rgba(48, 79, 89, 0.8);
+  --dark60: rgba(48, 79, 89, 0.6);
+  --transition: all 0.3s ease 0s;
+
+  // --ff: "Poppins", sans-serif;
+  --ff: "Lato", sans-serif;
+  --ff: "Inter", sans-serif;
+  --fw-reg: 300;
+  --fw-bold: 900;
+  --fs-h1: 2.2rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.6rem;
+  --fs-h4: 1.4rem;
+  --fs-h5: 1.2rem;
+  --fs-body: 1rem;
+
+  // Espacements
+
+  // Shadow
+  --shadow: 0 1px 8px 0 rgb(73 86 92 / 10%), 0 4px 6px 0 rgb(73 86 92 / 12%);
+
+  // Buttons
+}
+
+/* Reset class*/
+* {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+  // font-size: clamp(100%, calc(1rem + 2vw), 24px);
+}
+
+html,
+body {
+  // Va dépendre du projet
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--clr-1);
+  color: var(--clr-4);
+}
+// Make #root div use all available space
+
+body {
+  line-height: 1.5;
+  font-family: var(--ff);
+  display: flex;
+  flex-flow: column;
+}
+
+/**
+* Preventing Text Overflow 
+*/
+p,
+li,
+h1,
+h2,
+h3,
+h4 {
+  // Help prevent overflow of long words/names/URLs
+  overflow-wrap: break-word;
+
+  // Optional, not supported for all languages
+  hyphens: auto;
+}
+
+$type-ratios: (
+  "minorSecond": 1.067,
+  "majorSecond": 1.125,
+  "minorThird": 1.2,
+  "majorThird": 1.25,
+  "perfectFourth": 1.333,
+  "augmentedFourth": 1.414,
+  "perfectFifth": 1.5,
+  "goldenRatio": 1.618,
+);
+
+// Recommended starting point
+$type-base-size: 1rem;
+
+// Select by key of map, or use a custom value
+// $type-size-ratio: type-ratio(goldenRatio);
+
+// List in descending order to prevent extra sort function
+$type-levels: 4, 3, 2, 1;
+
+$level-size: $type-base-size;
+
+@each $level in $type-levels {
+  $level-size: $level-size * map-get($type-ratios, "perfectFifth");
+
+  h#{$level} {
+    font-size: $level-size;
+  }
+}
+@media screen and (min-width: 560px) {
+}
+
+@media screen and (min-width: 700px) {
+}
+
+@media screen and (min-width: 960px) {
+}
+
+@media screen and (min-width: 1400px) {
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+}
+
+.container {
+  @extend .flex, .center, .wrapp !optional;
+}
+
+.wrapp {
+  --pading: 4rem clamp(0.8rem, 2vw + 1rem, 3rem);
+  padding: var(--pading, 4rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+.spacing > * + * {
+  margin-top: var(--spacer, 2rem);
+}
+
+.flex {
+  display: flex;
+}
+.center {
+  height: 100%;
+  --direction: column;
+  justify-content: center;
+  flex-direction: var(--direction, column);
+  align-items: center;
+}
+
+.split {
+  --gap: 2em;
+
+  gap: var(--gap);
+  flex-wrap: wrap;
+  justify-content: center;
+
+  // & > * {
+  //   --min-width: 15em;
+  //   --flex-basis: 30%;
+  //   flex-basis: var(--flex-basis, 30%);
+  //   min-width: var(--min-width, 15em);
+  // }
+  &__item {
+    // --min-width: 15em;
+    // min-width: var(--min-width, 15em);
+    // ! min width is the same as flex-basis
+    --flex-basis: 30%;
+    flex-basis: var(--flex-basis, 30%);
+  }
+}
+
+// Navbar
+.burger {
+  img {
+    height: 20px;
+    width: 40px;
+    filter: sepia(1);
+  }
+}
+
+.navbar {
+  background-color: var(--clr-5);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  .wrapp {
+    --pading: 1rem 2rem;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      width: 128px;
+      height: auto;
+    }
+    .items {
+      display: none;
+      @media screen and (min-width: 960px) {
+        display: flex;
+        gap: 2rem;
+      }
+    }
+    .burger {
+      @media screen and (min-width: 960px) {
+        display: none;
+      }
+    }
+  }
+}
+
+// @supports (background-blend-mode: multiply) {
+//   background: url("../assets/img/Hero.png"), radial-gradient(#444, #111);
+//   background-blend-mode: multiply; // *Melt the image with gradient
+//   background-attachment: fixed; // *Parallax effect
+//   background-repeat: no-repeat;
+//   background-position: center center;
+//   background-size: cover;
+// }
+
+.card {
+  background-color: var(--clr-4);
+  border-radius: 0.625rem;
+  box-shadow: var(--shadow);
+  color: var(--clr-1);
+  flex-direction: column;
+  line-height: 1.38;
+  margin-top: 1.1875rem;
+  &.wrapp {
+    --pading: 2em 1em;
+  }
+}
+
+.search {
+  height: 2.5rem;
+  display: flex;
+  width: clamp(15em, 20em + 18vw, 50%);
+  & > * {
+    border: none;
+  }
+  input {
+    flex: 10;
+    border-radius: 1.5625rem 0 0 1.5625rem;
+    &:focus,
+    &:hover {
+      border: none;
+    }
+    &::placeholder {
+      padding-left: 1.8rem;
+    }
+  }
+
+  button {
+    border-radius: 0 1.5625rem 1.5625rem 0;
+    background: var(--clr-3);
+    flex: 3;
+    padding: 0 1em;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    background: var(--clr-5);
+    border-radius: 4rem;
+    box-shadow: var(--shadow);
+    min-width: 15rem;
+    text-align: center;
+    &--secondary {
+      background-color: var(--clr-3);
+      color: var(--clr-1);
+    }
+    &--tertiary {
+      background-color: var(--clr-4);
+      color: var(--clr-1);
+    }
+  }
+}
