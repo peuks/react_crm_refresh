@@ -1,5 +1,5 @@
 import axios from "axios";
-import { allCustomersURL } from "../api/url";
+import { allCustomersURL, customerURL } from "../api/url";
 
 // Action Creator
 
@@ -20,13 +20,16 @@ export const loadCustomers = () => async (dispatch) => {
   });
 };
 
-// export const fetchSearch = (gameName) => async (dispatch) => {
-//   const searchGames = await axios.get(searchGameURL(gameName));
-
-//   dispatch({
-//     type: "FETCH_SEARCHED",
-//     payload: {
-//       searched: searchGames.data.results,
-//     },
-//   });
-// };
+export const deleteCustomer = (id, customers) => async (dispatch) => {
+  const deleteCustomer = await axios.delete(customerURL(id));
+  console.log(deleteCustomer);
+  dispatch({
+    type: "DELETE_CUSTOMERS",
+    payload: {
+      usersCustomers: () => {
+        customers.filter((customer) => customer.id !== id);
+        return deleteCustomer ? customers : "";
+      },
+    },
+  });
+};

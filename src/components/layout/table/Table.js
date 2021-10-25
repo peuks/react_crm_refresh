@@ -1,10 +1,19 @@
 import React from "react";
 import { numberWithSpaces, roundedNumber } from "../../../utils";
 import tw from "tailwind-styled-components";
-const Table = ({ customers }) => {
-  return (
-    // <!-- component -->
+import { useDispatch } from "react-redux";
+import { deleteCustomer } from "../../../actions/customersActions";
 
+const Table = ({ customers }) => {
+  const dispatch = useDispatch();
+
+  const deleteCustomerHandler = (id, customers) => {
+    dispatch(deleteCustomer(id, customers));
+  };
+  const test = () => {
+    console.log("working");
+  };
+  return (
     <>
       {customers.length > 0 && (
         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -65,7 +74,10 @@ const Table = ({ customers }) => {
                                 : ""
                             }`}
                             type="button"
-                            disabled={true}
+                            disabled={e.invoices.length > 0 ? true : false}
+                            onClick={() =>
+                              deleteCustomerHandler(e.id, customers)
+                            }
                           >
                             Supprimer
                           </button>

@@ -8,3 +8,5 @@ const version = "v1";
 const customers = "customers";
 
 export const allCustomersURL = () => `${base_url}/${version}/${customers}`;
+
+export const customerURL = (id) => `${base_url}/${version}/${customers}/${id}`;

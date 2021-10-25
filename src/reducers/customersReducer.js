@@ -11,11 +11,11 @@ const customersReducer = (state = initState, action) => {
         ...state,
         usersCustomers: action.payload.usersCustomers,
       };
-    // case "FETCH_SEARCHED":
-    //   return {
-    //     ...state,
-    //     searched: action.payload.searched,
-    //   };
+    case "DELETE_CUSTOMERS":
+      return {
+        ...state,
+        usersCustomers: action.payload.usersCustomers,
+      };
     // case "CLEAR_SEARCHED":
     //   return {
     //     ...state,

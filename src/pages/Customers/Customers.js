@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "../../components/layout";
-import { loadCustomers } from "../../actions/customersActions";
+import { deleteCustomer, loadCustomers } from "../../actions/customersActions";
 
 const Customers = () => {
   //
