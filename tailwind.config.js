@@ -3,6 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      opacity: ["disabled"],
       colors: {
         "bookmark-purple": "#5267DF",
         "bookmark-red": "#FA5959",

@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Table } from "../../components/layout";
+import { loadCustomers } from "../../actions/customersActions";
 
 const Customers = () => {
+  //
+  // FETCH Clients
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadCustomers());
+  }, [dispatch]);
+
+  const { usersCustomers } = useSelector((state) => state.customers);
   return (
     <div className="container w-full  p-10 m-4 mx-auto my-16 text-center bg-white border-2 border-gray-300 border-dashed  rounded-xl">
       <h1 className="text-4xl pb-8">Liste des clients</h1>
-      <div className="">
-        <Table />
-      </div>{" "}
+
+      {usersCustomers && <Table customers={usersCustomers} />}
     </div>
   );
 };
