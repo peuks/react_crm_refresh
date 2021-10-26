@@ -16,13 +16,13 @@ export const loadCustomers = () => async (dispatch) => {
     type: "FETCH_CUSTOMERS",
     payload: {
       usersCustomers: allCustomers.data["hydra:member"],
+      totalCustomers: allCustomers.data["hydra:totalItems"],
     },
   });
 };
 
 export const deleteCustomer = (id, customers) => async (dispatch) => {
   const deleteCustomer = await axios.delete(customerURL(id));
-  console.log(deleteCustomer);
   dispatch({
     type: "DELETE_CUSTOMERS",
     payload: {
