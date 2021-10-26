@@ -55,7 +55,6 @@ const renderData = (customers) => {
                     </td>
                     <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {numberWithSpaces(roundedNumber(e.totalAmount))} €
-                      {e.totalAmount}
                     </td>
                     <td className="hidden lg:block border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       <button
@@ -84,10 +83,10 @@ const renderData = (customers) => {
 
 const Table = ({ customers }) => {
   const [currentPage, setcurrentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(50);
+  const [itemsPerPage, setitemsPerPage] = useState(80);
 
-  const [pageNumberLimit, setpageNumberLimit] = useState(5);
-  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(9);
+  const [pageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
   const handleClick = (event) => {
@@ -111,6 +110,21 @@ const Table = ({ customers }) => {
       setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
   };
+  const handleEndbtn = () => {
+    if (currentPage !== pages.slice(-1)[0]) {
+      setcurrentPage(pages.slice(-1)[0]);
+      setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+  };
+
+  const handleStartbtn = () => {
+    if (currentPage !== 1) {
+      setcurrentPage(1);
+      setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+  };
 
   const handlePrevbtn = () => {
     if (currentPage >= 2) {
@@ -132,6 +146,7 @@ const Table = ({ customers }) => {
     <>
       <div className="flex items-center justify-center mb-4">
         <button
+          onClick={handleStartbtn}
           className="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
           type="button"
         >
@@ -180,6 +195,7 @@ const Table = ({ customers }) => {
           <i className="fas fa-angle-right"></i>
         </button>
         <button
+          onClick={handleEndbtn}
           className="text-purple-500 bg-transparent border-t border-b border-r border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
           type="button"
         >
@@ -234,8 +250,10 @@ const Table = ({ customers }) => {
         >
           <i className="fas fa-angle-right"></i>
         </button>
+
         <button
-          className="text-purple-500 bg-transparent border-t border-b border-r border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+          onClick={handleNextbtn}
+          className="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
           type="button"
         >
           <i className="fas fa-angle-double-right"></i>
