@@ -75,7 +75,6 @@ const renderData = (customers) => {
             </>
           </tbody>
         </table>
-        <hr className="py-4" />*
       </div>
     </div>
   );
@@ -83,7 +82,7 @@ const renderData = (customers) => {
 
 const Table = ({ customers }) => {
   const [currentPage, setcurrentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(80);
+  const [itemsPerPage, setitemsPerPage] = useState(10);
 
   const [pageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
@@ -202,63 +201,9 @@ const Table = ({ customers }) => {
           <i className="fas fa-angle-double-right"></i>
         </button>
       </div>
+      {/* TABLE */}
       {renderData(currentItems)}
-      <div className="flex items-center justify-center mb-4">
-        <button
-          className="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
-          type="button"
-        >
-          <i className="fas fa-angle-double-left"></i>
-        </button>
-        <button
-          onClick={handlePrevbtn}
-          className="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
-          type="button"
-        >
-          <i className="fas fa-angle-left"></i>
-        </button>
-        <>
-          {pages.map((number) => {
-            if (
-              number < maxPageNumberLimit + 1 &&
-              number > minPageNumberLimit
-            ) {
-              return (
-                <button
-                  key={number}
-                  id={number}
-                  onClick={handleClick}
-                  className={`  bg-transparent border-l border-t border-b border-purple-500   active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150 ${
-                    currentPage === number
-                      ? "text-white   bg-purple-500"
-                      : "text-purple-500 hover:text-white hover:bg-purple-500 "
-                  }
-                              `}
-                  type="button"
-                >
-                  {number}
-                </button>
-              );
-            }
-          })}
-        </>
-
-        <button
-          onClick={handleNextbtn}
-          className="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
-          type="button"
-        >
-          <i className="fas fa-angle-right"></i>
-        </button>
-
-        <button
-          onClick={handleNextbtn}
-          className="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
-          type="button"
-        >
-          <i className="fas fa-angle-double-right"></i>
-        </button>
-      </div>
+      {/* TABLE */}
     </>
   );
 };
