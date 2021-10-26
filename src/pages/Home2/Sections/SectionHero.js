@@ -35,7 +35,7 @@ const Section1 = () => {
       </div>
       {/* Rounded Rectangle */}
       <div
-        class="
+        className="
           hidden
           md:block
           overflow-hidden

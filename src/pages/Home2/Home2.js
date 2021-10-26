@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../../components/layout/navigation/NavBar/NavBar";
 
 const Home2 = () => {
   return (
