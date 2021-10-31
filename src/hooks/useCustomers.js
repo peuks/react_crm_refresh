@@ -9,9 +9,11 @@ const useCustomers = () => {
     dispatch(loadCustomers());
   }, [dispatch]);
 
-  const { usersCustomers, searched } = useSelector((state) => state.customers);
+  const { usersCustomers, searchedCustomers } = useSelector(
+    (state) => state.customers
+  );
 
-  return { usersCustomers, searched };
+  return { usersCustomers, searchedCustomers };
 };
 
 export default useCustomers;

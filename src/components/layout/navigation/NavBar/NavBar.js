@@ -20,7 +20,7 @@ const NavBar = () => {
     <>
       <nav className="bg-white shadow dark:bg-gray-800">
         <div className="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
-          <div className="flex items-center justify-between">
+          <div className="flex justify-between items-center">
             <div>
               <LinkNavigation logo={true} path="/">
                 SymReact
@@ -50,14 +50,14 @@ const NavBar = () => {
                 Inscription
               </LinkNavigation> */}
               <button
-                className="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                className="px-6 py-3 mr-1 mb-1 text-sm font-bold text-white uppercase bg-purple-500 rounded shadow transition-all duration-150 ease-linear outline-none active:bg-purple-600 hover:shadow-lg focus:outline-none"
                 type="button"
               >
                 Connexion
               </button>
 
               {/* <button
-                className="bg-red-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                className="px-6 py-3 mr-1 mb-1 text-sm font-bold text-white uppercase bg-red-500 rounded shadow transition-all duration-150 ease-linear outline-none active:bg-purple-600 hover:shadow-lg focus:outline-none"
                 type="button"
               >
                 Déconnexion

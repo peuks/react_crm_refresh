@@ -1,5 +1,5 @@
 import axios from "axios";
-import { allCustomersURL, customerURL } from "../api/url";
+import { allCustomersURL, customerURL, invoicesURL } from "../api/url";
 
 // Action Creator
 
@@ -48,6 +48,32 @@ export const deleteCustomer = (id, customers) => async (dispatch) => {
         customers.filter((customer) => customer.id !== id);
         return deleteCustomer ? customers : "";
       },
+    },
+  });
+};
+/**
+ * Fetch Data and distpath an object with a type of FESTCH_GAME
+ * @returns
+ */
+export const loadInvoices = () => async (dispatch) => {
+  //FETCH AXIOS
+  const invoices = await axios.get(invoicesURL());
+  // const newGamesData = await axios.get(newGamesURL());
+  // const upcomingData = await axios.get(upcomingGamesURL());
+  dispatch({
+    type: "FETCH_INVOICES",
+    payload: {
+      invoices: invoices.data["hydra:member"],
+      totalInvoices: invoices.data["hydra:totalItems"],
+    },
+  });
+};
+
+export const invoicesSearch = (result) => async (dispatch) => {
+  dispatch({
+    type: "SEARCHED_INVOICES",
+    payload: {
+      searchedInvoices: result,
     },
   });
 };

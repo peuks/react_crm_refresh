@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Customers, Home2 } from "../pages";
+import { Customers, Home2, Invoices } from "@pages";
 
 const ROUTES = [
   {
@@ -19,6 +19,12 @@ const ROUTES = [
         key: "APP_CUSTOMERS",
         exact: true,
         component: () => <Customers />,
+      },
+      {
+        path: "/invoices",
+        key: "APP_INVOICES",
+        exact: true,
+        component: () => <Invoices />,
       },
       {
         path: "/app/page",

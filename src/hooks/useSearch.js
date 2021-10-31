@@ -25,7 +25,7 @@ const useSearch = (usersCustomers) => {
 
   const getSearchResult = (userInput) => {
     return (
-      // usersCustomers.length > 0 &&
+      usersCustomers.length > 0 &&
       usersCustomers
         .filter(
           (word) =>

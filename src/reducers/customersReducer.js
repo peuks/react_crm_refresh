@@ -1,7 +1,10 @@
 const initState = {
   usersCustomers: [],
   totalCustomers: 0,
-  searched: [],
+  invoices: [],
+  totalInvoices: 0,
+  searchedCustomers: [],
+  searchedInvoices: [],
 };
 
 const customersReducer = (state = initState, action) => {
@@ -10,7 +13,7 @@ const customersReducer = (state = initState, action) => {
       return {
         ...state,
         usersCustomers: action.payload.usersCustomers,
-        searched: action.payload.usersCustomers,
+        searchedCustomers: action.payload.usersCustomers,
         totalCustomers: action.payload.totalCustomers,
       };
     case "DELETE_CUSTOMERS":
@@ -21,12 +24,25 @@ const customersReducer = (state = initState, action) => {
     case "SEARCHED_CUSTOMERS":
       return {
         ...state,
-        searched: action.payload.searched,
+        searchedCustomers: action.payload.searched,
       };
+
     case "CLEAR_SEARCHED":
       return {
         ...state,
-        searched: [],
+        searchedCustomers: [],
+      };
+    case "FETCH_INVOICES":
+      return {
+        ...state,
+        invoices: action.payload.invoices,
+        searchedInvoices: action.payload.invoices,
+        totalInvoices: action.payload.totalInvoices,
+      };
+    case "SEARCHED_INVOICES":
+      return {
+        ...state,
+        searchedInvoices: action.payload.searchedInvoices,
       };
     default:
       return { ...state };
