@@ -21,6 +21,24 @@ export const loadCustomers = () => async (dispatch) => {
   });
 };
 
+export const customersSearch = (result) => async (dispatch) => {
+  dispatch({
+    type: "SEARCHED_CUSTOMERS",
+    payload: {
+      searched: result,
+    },
+  });
+};
+export const resetSearchResult = (initialValue) => async (dispatch) => {
+  console.log("test");
+  dispatch({
+    type: "SEARCHED_CUSTOMERS",
+    payload: {
+      searched: initialValue,
+    },
+  });
+};
+
 export const deleteCustomer = (id, customers) => async (dispatch) => {
   const deleteCustomer = await axios.delete(customerURL(id));
   dispatch({

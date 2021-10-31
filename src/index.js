@@ -26,7 +26,6 @@ ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <Router>
-        <NavBar />
         <App />
       </Router>
     </React.StrictMode>

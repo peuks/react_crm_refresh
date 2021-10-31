@@ -2,7 +2,7 @@ import React from "react"; // import { Section1, Section2 } from "./Sections";
 import { logoBookmark } from "../../assets/img";
 import { Footer } from "../../components/layout";
 import { Button, Burger } from "../../components/ui/";
-import { SectionHero, Features,Download, Faq, ContactUs } from "./Sections";
+import { SectionHero, Features, Download, Faq, ContactUs } from "./Sections";
 
 const Home = () => {
   return (
@@ -27,10 +27,9 @@ const Home = () => {
       <SectionHero />
       <Features />
       <Download />
-      <Faq/>
-      <ContactUs/>
-      <Footer/>
-
+      <Faq />
+      <ContactUs />
+      <Footer />
     </>
   );
 };

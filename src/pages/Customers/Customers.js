@@ -1,23 +1,25 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Table } from "../../components/layout";
-import { loadCustomers } from "../../actions/customersActions";
+import React, { useState } from "react";
+
+import { Table, Search } from "components/layout";
+import useCustomers from "hooks/useCustomers";
+import useSearch from "hooks/useSearch";
 
 const Customers = () => {
-  //
-  // FETCH Clients
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadCustomers());
-  }, [dispatch]);
+  const { usersCustomers, searched } = useCustomers();
+  const { handleSearch, userInput, setUserInput } = useSearch(usersCustomers);
 
-  const { usersCustomers } = useSelector((state) => state.customers);
-  // console.log();
+  console.log(searched);
   return (
-    <div className="container w-full  p-5 m-4 mx-auto my-16 text-center bg-white border-2 border-gray-300 border-dashed  rounded-xl">
-      <h1 className="text-4xl pb-8">Liste des clients</h1>
+    <div className="container p-5 m-4 mx-auto my-8 w-full text-center bg-white rounded-xl border-2 border-gray-300 border-dashed">
+      <h1 className="pb-8 text-4xl">Liste des clients</h1>
+      <Search
+        setUserInput={setUserInput}
+        usersCustomers={usersCustomers}
+        handleSearch={handleSearch}
+        userInput={userInput}
+      />
 
-      {usersCustomers && <Table customers={usersCustomers} />}
+      {searched && <Table customers={searched} />}
     </div>
   );
 };
