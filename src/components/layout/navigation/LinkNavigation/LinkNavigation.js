@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const LinkNavigation = ({ children, path, logo = false, ...props }) => {
   const linkStyle =
@@ -9,9 +9,9 @@ const LinkNavigation = ({ children, path, logo = false, ...props }) => {
   const style = logo ? logoStyle : linkStyle;
 
   return (
-    <Link className={style} to={path} {...props}>
+    <NavLink className={style} to={path} {...props}>
       {children}
-    </Link>
+    </NavLink>
   );
 };
 

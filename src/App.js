@@ -6,7 +6,7 @@ const App = () => {
   return (
     <>
       <NavBar />
-      <RenderRoutes routes={ROUTES} />;
+      <RenderRoutes routes={ROUTES} />
     </>
   );
 };

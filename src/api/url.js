@@ -17,3 +17,5 @@ export const invoicesURL = () =>
 export const invoiceURL = (id) => `${base_url}/${version}/${invoices}/${id}`;
 
 export const customerURL = (id) => `${base_url}/${version}/${customers}/${id}`;
+
+export const loginURL = (id) => `${base_url}/login_check`;
