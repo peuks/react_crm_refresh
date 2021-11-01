@@ -1,5 +1,6 @@
 import { loginURL } from "api/url";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const authenticate = (credentials) => {
   return axios.post(loginURL(), credentials).then((token) => {
@@ -15,6 +16,25 @@ export const logOut = () => {
   if (typeof axios.defaults.headers != "undefined") {
     console.log("yep");
     delete axios.defaults.headers["Authorization"];
+  }
+};
+
+const setAxiosToken = (token) => {
+  axios.defaults.headers["Authorization"] = "Bearer " + token;
+};
+
+export const setup = (params) => {
+  const token = window.localStorage.getItem("authToken");
+
+  if (token) {
+    const { exp: tokenExpiration } = jwtDecode(token);
+    if (tokenExpiration * 1000 > new Date().getTime()) {
+      setAxiosToken(token);
+    }
+    console.log("YAY");
+  } else {
+    console.log("OW");
+    logOut();
   }
 };
 
