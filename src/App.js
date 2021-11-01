@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./components/layout/navigation/NavBar/NavBar";
 import ROUTES, { RenderRoutes } from "routes";
 import { setup } from "services/authApi";
+import useLogin from "hooks/useLogin";
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   /**
    * Initialize the app by loading token from localstorage if exist
    */
-  setup();
+  const { appInit } = useLogin();
+  appInit();
   return (
     <>
-      <NavBar />
-      <RenderRoutes routes={ROUTES} />
+      <NavBar logged={isAuthenticated} />
+      <RenderRoutes
+        routes={ROUTES}
+        isAuthenticated={isAuthenticated}
+        setIsAuthenticated={setIsAuthenticated}
+      />
     </>
   );
 };

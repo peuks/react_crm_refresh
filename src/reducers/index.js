@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import customersReducer from "./customersReducer";
+import userReducer from "./userReducer";
 // import detailReducer from "./gameReducer";
 
 /**
@@ -7,6 +8,7 @@ import customersReducer from "./customersReducer";
  */
 const rootReducer = combineReducers({
   customers: customersReducer,
+  user: userReducer,
 });
 
 export default rootReducer;

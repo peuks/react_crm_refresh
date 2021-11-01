@@ -73,6 +73,18 @@ export const loadInvoices = () => async (dispatch) => {
   });
 };
 
+export const resetInvoices = () => async (dispatch) => {
+  dispatch({
+    type: "RESET_INVOICES",
+  });
+};
+
+export const resetCustomers = () => async (dispatch) => {
+  dispatch({
+    type: "RESET_CUSTOMERS",
+  });
+};
+
 export const invoicesSearch = (result) => async (dispatch) => {
   dispatch({
     type: "SEARCHED_INVOICES",

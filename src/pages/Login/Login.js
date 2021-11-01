@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import { loadCustomers, loadInvoices } from "actions/customersActions";
+import { login } from "actions/userAction";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import authenticate from "services/authApi";
 
 const Login = () => {
@@ -14,17 +18,25 @@ const Login = () => {
     const { value, name } = currentTarget;
     setCredentials({ ...credentials, [name]: value });
   };
-
+  const history = useHistory();
+  const dispatch = useDispatch();
   // Submit handling
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await authenticate(credentials);
       setError(false);
+      dispatch(login());
+      dispatch(loadInvoices());
+      dispatch(loadCustomers());
+      history.replace("/");
     } catch (error) {
       setError("Wrong password or Email");
     }
   };
+
+  const { isAuthenticated } = useSelector((state) => state.user);
+  isAuthenticated && history.push("/");
 
   return (
     <div class="flex relative flex-col flex-grow items-center bg-gray-100 sm:justify-center">

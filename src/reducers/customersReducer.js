@@ -50,6 +50,20 @@ const customersReducer = (state = initState, action) => {
         searchedInvoices: action.payload.searchedInvoices,
         invoices: action.payload.searchedInvoices,
       };
+    case "RESET_INVOICES":
+      return {
+        ...state,
+        invoices: [],
+        totalInvoices: 0,
+        searchedInvoices: [],
+      };
+    case "RESET_CUSTOMERS":
+      return {
+        ...state,
+        usersCustomers: [],
+        totalCustomers: 0,
+        searchedCustomers: [],
+      };
     default:
       return { ...state };
   }

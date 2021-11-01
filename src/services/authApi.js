@@ -1,6 +1,8 @@
+import { login, logout } from "actions/userAction";
 import { loginURL } from "api/url";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
 
 const authenticate = (credentials) => {
   return axios.post(loginURL(), credentials).then((token) => {
@@ -19,10 +21,9 @@ export const logOut = () => {
   }
 };
 
-const setAxiosToken = (token) => {
+export const setAxiosToken = (token) => {
   axios.defaults.headers["Authorization"] = "Bearer " + token;
 };
-
 export const setup = (params) => {
   const token = window.localStorage.getItem("authToken");
 
