@@ -1,5 +1,10 @@
 import axios from "axios";
-import { allCustomersURL, customerURL, invoicesURL } from "../api/url";
+import {
+  allCustomersURL,
+  customerURL,
+  invoicesURL,
+  invoiceURL,
+} from "../api/url";
 
 // Action Creator
 
@@ -30,7 +35,6 @@ export const customersSearch = (result) => async (dispatch) => {
   });
 };
 export const resetSearchResult = (initialValue) => async (dispatch) => {
-  console.log("test");
   dispatch({
     type: "SEARCHED_CUSTOMERS",
     payload: {
@@ -74,6 +78,22 @@ export const invoicesSearch = (result) => async (dispatch) => {
     type: "SEARCHED_INVOICES",
     payload: {
       searchedInvoices: result,
+    },
+  });
+};
+
+export const deleteInvoice = (id, invoices) => async (dispatch) => {
+  const { status } = await axios.delete(invoiceURL(id));
+  console.log(invoices, invoices.length);
+  const filtered = invoices.filter((invoices) => invoices.id !== id);
+  console.log(filtered.length);
+  // console.log(filtered.length);
+
+  // console.log(invoices);
+  dispatch({
+    type: "DELETE_INVOICE",
+    payload: {
+      searchedInvoices: status === 204 ? filtered : invoices,
     },
   });
 };

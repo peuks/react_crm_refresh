@@ -5,7 +5,7 @@ import { converDate, setClrBtn } from "utils";
 
 // export default Table;
 
-const renderData = (invoices) => {
+const renderData = (invoices, handleDelete) => {
   return (
     <div className="flex relative flex-col mb-6 w-full min-w-0 break-words bg-white rounded shadow-lg">
       <div className="block overflow-x-hidden w-full">
@@ -71,9 +71,11 @@ const renderData = (invoices) => {
                         Éditer
                       </button>
                       <button
+                        id={e.id}
                         className="px-4 py-2 mr-1 mb-1 text-xs font-bold text-white uppercase bg-red-500 rounded shadow transition-all duration-150 ease-linear outline-none active:bg-purple-600 hover:shadow-md focus:outline-none"
                         type="button"
                         // disabled={e.invoices.length > 0 ? true : false}
+                        onClick={handleDelete}
                       >
                         Supprimer
                       </button>
@@ -89,7 +91,7 @@ const renderData = (invoices) => {
   );
 };
 
-const Table2 = ({ invoices }) => {
+const Table2 = ({ invoices, handleDelete }) => {
   const [currentPage, setcurrentPage] = useState(1);
   const [itemsPerPage, setitemsPerPage] = useState(10);
 
@@ -211,7 +213,7 @@ const Table2 = ({ invoices }) => {
         </button>
       </div>
       {/* TABLE */}
-      {renderData(currentItems)}
+      {renderData(currentItems, handleDelete)}
       {/* TABLE */}
     </>
   );

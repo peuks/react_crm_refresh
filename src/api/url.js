@@ -14,4 +14,6 @@ export const allCustomersURL = () =>
 export const invoicesURL = () =>
   `${base_url}/${version}/${invoices}/?pagination=false`;
 
+export const invoiceURL = (id) => `${base_url}/${version}/${invoices}/${id}`;
+
 export const customerURL = (id) => `${base_url}/${version}/${customers}/${id}`;

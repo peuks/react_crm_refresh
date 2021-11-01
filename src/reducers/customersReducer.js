@@ -44,6 +44,12 @@ const customersReducer = (state = initState, action) => {
         ...state,
         searchedInvoices: action.payload.searchedInvoices,
       };
+    case "DELETE_INVOICE":
+      return {
+        ...state,
+        searchedInvoices: action.payload.searchedInvoices,
+        invoices: action.payload.searchedInvoices,
+      };
     default:
       return { ...state };
   }
