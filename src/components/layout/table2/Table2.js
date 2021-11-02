@@ -1,3 +1,5 @@
+import { numberWithSpaces, roundedNumber } from "@utils";
+import tw from "tailwind-styled-components";
 import React, { useState } from "react";
 import { converDate, setClrBtn } from "utils";
 
@@ -92,7 +94,7 @@ const renderData = (invoices, handleDelete) => {
 const Table2 = ({ invoices, handleDelete }) => {
   const [currentPage, setcurrentPage] = useState(1);
   const [itemsPerPage, setitemsPerPage] = useState(10);
-  setitemsPerPage(10);
+
   const [pageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
@@ -138,17 +140,17 @@ const Table2 = ({ invoices, handleDelete }) => {
     if (currentPage >= 2) {
       setcurrentPage(currentPage - 1);
 
-      if ((currentPage - 1) % pageNumberLimit === 0) {
+      if ((currentPage - 1) % pageNumberLimit == 0) {
         setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
         setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
       }
     }
   };
 
-  // // Not used here
-  // const handleLoadMore = () => {
-  //   setitemsPerPage(itemsPerPage + 5);
-  // };
+  // Not used here
+  const handleLoadMore = () => {
+    setitemsPerPage(itemsPerPage + 5);
+  };
 
   return (
     <>
@@ -217,4 +219,18 @@ const Table2 = ({ invoices, handleDelete }) => {
   );
 };
 
+const TH = tw.th`
+hidden
+md:block
+border-t-0
+px-6
+align-middle
+border-l-0
+border-r-0
+text-xs
+whitespace-nowrap
+p-4
+text-center
+text-blueGray-700
+`;
 export default Table2;
