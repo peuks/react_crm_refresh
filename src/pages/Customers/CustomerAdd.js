@@ -1,7 +1,7 @@
 import { loadCustomer } from "actions/customersActions";
 import { customersURL, customerURLWithoutId } from "api/url";
 import axios from "axios";
-import ErrorFiled from "components/forms/errorFiled/ErrorFiled";
+import ErrorFiled from "components/forms/Error/ErrorFiled";
 import Input from "components/forms/Input/Input";
 import Label from "components/forms/Label/Label";
 import React, { useEffect, useState } from "react";
