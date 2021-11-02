@@ -1,8 +1,7 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { Customers, Home2, Invoices, Login } from "@pages";
+import { CustomerAdd, Customers, Home2, Invoices, Login } from "@pages";
 import { useSelector } from "react-redux";
-import { CustomerAdd } from "pages";
 
 const ROUTES = [
   {
@@ -25,18 +24,18 @@ const ROUTES = [
         component: () => <Customers />,
       },
       {
-        path: "/customers/:id",
-        key: "APP_CUSTOMERS_ADD",
-        exact: true,
-        protected: true,
-        component: () => <CustomerAdd />,
-      },
-      {
         path: "/invoices",
         key: "APP_INVOICES",
         exact: true,
         protected: true,
         component: () => <Invoices />,
+      },
+      {
+        path: "/customers/:id",
+        key: "APP_CUSTOMERS_ADD",
+        exact: true,
+        protected: true,
+        component: () => <CustomerAdd />,
       },
       {
         path: "/login",

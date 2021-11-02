@@ -4,7 +4,7 @@ import {
   customersURL,
   invoicesURL,
   invoiceURL,
-} from "../api/url";
+} from "api/url";
 
 // Action Creator
 /**
@@ -13,8 +13,7 @@ import {
  */
 export const loadCustomer = (id) => async (dispatch) => {
   //FETCH AXIOS
-  const customer = await axios.get(customersURL(id));
-  delete customer.data.user;
+  let customer = await axios.get(customersURL(id));
   dispatch({
     type: "FETCH_CUSTOMER",
     payload: {

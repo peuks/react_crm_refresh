@@ -4,7 +4,7 @@ import Table2 from "components/layout/table2/Table2";
 import { useDispatch } from "react-redux";
 import { deleteInvoice } from "actions/customersActions";
 
-const Customers = () => {
+const Invoices2 = () => {
   const { searchedInvoices } = useInvoices();
   const dispatch = useDispatch();
   // const { handleSearch, userInput, setUserInput } = useSearch(usersCustomers);
@@ -28,4 +28,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Invoices2;

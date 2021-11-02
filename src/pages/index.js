@@ -6,7 +6,6 @@ import Home2 from "./Home2/Home2";
 import Invoices from "./Invoices/Invoices";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
-
 export {
   Contact,
   Home,

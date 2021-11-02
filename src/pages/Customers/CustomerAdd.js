@@ -32,9 +32,11 @@ const CustomerAdd = () => {
     try {
       setErrors(template);
       if (editing) {
-        console.log(customersURL(id));
-        await axios.put(customersURL(id), customer).then((e) => console.log(e));
+        const { company, email, lastName, firstName } = customer;
+        const resp = { company, email, lastName, firstName };
+        await axios.put(customersURL(id), resp);
 
+        history.replace("/customers");
         // toast.success("Le client a bien été modifié !");
       } else {
         await axios.post(customerURLWithoutId(), customer);
@@ -62,9 +64,6 @@ const CustomerAdd = () => {
 
       setCustomer(usersCustomer);
 
-      console.log(usersCustomer);
-
-      console.log(customer);
       setTimeout(() => {
         setisLoading(false);
       }, 1000);
