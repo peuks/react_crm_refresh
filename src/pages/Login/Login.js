@@ -1,8 +1,9 @@
 import { loadCustomers, loadInvoices } from "actions/customersActions";
 import { login } from "actions/userAction";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import authenticate from "services/authApi";
 
 const Login = () => {
@@ -115,12 +116,12 @@ const Login = () => {
               </label>
 
               <div class="w-full text-right">
-                <a
+                <Link
                   class="text-sm text-gray-600 underline hover:text-gray-900"
-                  href="#"
+                  to="/"
                 >
                   ¿Olvidó su contraseña?
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -151,12 +152,12 @@ const Login = () => {
             <div class="mt-7">
               <div class="flex justify-center items-center">
                 <label class="mr-2">¿Eres nuevo?</label>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   class="text-blue-500 transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
                 >
                   Crea una cuenta
-                </a>
+                </Link>
               </div>
             </div>
           </form>

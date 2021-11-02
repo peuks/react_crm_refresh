@@ -1,12 +1,27 @@
 import axios from "axios";
 import {
   allCustomersURL,
-  customerURL,
+  customersURL,
   invoicesURL,
   invoiceURL,
 } from "../api/url";
 
 // Action Creator
+/**
+ * Fetch Data and distpath an object with a type of FESTCH_GAME
+ * @returns
+ */
+export const loadCustomer = (id) => async (dispatch) => {
+  //FETCH AXIOS
+  const customer = await axios.get(customersURL(id));
+  delete customer.data.user;
+  dispatch({
+    type: "FETCH_CUSTOMER",
+    payload: {
+      usersCustomer: customer.data,
+    },
+  });
+};
 
 /**
  * Fetch Data and distpath an object with a type of FESTCH_GAME
@@ -15,8 +30,7 @@ import {
 export const loadCustomers = () => async (dispatch) => {
   //FETCH AXIOS
   const allCustomers = await axios.get(allCustomersURL());
-  // const newGamesData = await axios.get(newGamesURL());
-  // const upcomingData = await axios.get(upcomingGamesURL());
+
   dispatch({
     type: "FETCH_CUSTOMERS",
     payload: {
@@ -44,7 +58,7 @@ export const resetSearchResult = (initialValue) => async (dispatch) => {
 };
 
 export const deleteCustomer = (id, customers) => async (dispatch) => {
-  const deleteCustomer = await axios.delete(customerURL(id));
+  const deleteCustomer = await axios.delete(customersURL(id));
   dispatch({
     type: "DELETE_CUSTOMERS",
     payload: {

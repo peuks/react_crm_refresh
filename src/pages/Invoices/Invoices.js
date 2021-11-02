@@ -1,11 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { Table, Search } from "components/layout";
-import useCustomers from "hooks/useCustomers";
-import useSearch from "hooks/useSearch";
+import React from "react";
 import useInvoices from "hooks/useInvoices";
 import Table2 from "components/layout/table2/Table2";
-import { invoiceURL } from "api/url";
 import { useDispatch } from "react-redux";
 import { deleteInvoice } from "actions/customersActions";
 

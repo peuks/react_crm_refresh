@@ -20,5 +20,7 @@ export const setClrBtn = (params) => {
       return "bg-red-500";
     case "PAID":
       return "bg-green-500";
+    default:
+      return "bg-green-500";
   }
 };

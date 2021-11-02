@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { Customers, Home2, Invoices, Login } from "@pages";
+import { Customers, Invoices, Login, Register } from "@pages";
 import { useSelector } from "react-redux";
+import { CustomerAdd } from "pages";
 
 const ROUTES = [
   {
@@ -10,18 +11,18 @@ const ROUTES = [
     component: RenderRoutes, // here's the update
     routes: [
       {
-        path: "/",
-        key: "APP_ROOT",
-        exact: true,
-        protected: false,
-        component: () => <Home2 />,
-      },
-      {
         path: "/customers",
         key: "APP_CUSTOMERS",
         exact: true,
         protected: true,
         component: () => <Customers />,
+      },
+      {
+        path: "/customers/:id",
+        key: "APP_CUSTOMERS_ADD",
+        exact: true,
+        protected: true,
+        component: () => <CustomerAdd />,
       },
       {
         path: "/invoices",
@@ -36,6 +37,13 @@ const ROUTES = [
         exact: true,
         protected: false,
         component: () => <Login />,
+      },
+      {
+        path: "/register",
+        key: "APP_REGISTER",
+        exact: true,
+        protected: false,
+        component: () => <Register />,
       },
       {
         path: "/app/page",

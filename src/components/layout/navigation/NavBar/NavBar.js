@@ -70,7 +70,7 @@ const NavBar = () => {
                 <LinkNavigation
                   className="hidden my-1 text-gray-700 md:block dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
                   key="1"
-                  to="/"
+                  to="/register"
                 >
                   Inscription
                 </LinkNavigation>

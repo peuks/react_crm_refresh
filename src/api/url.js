@@ -11,11 +11,14 @@ const invoices = "invoices";
 export const allCustomersURL = () =>
   `${base_url}/${version}/${customers}/?pagination=false`;
 
+export const customersURL = (id) => `${base_url}/${version}/${customers}/${id}`;
+
 export const invoicesURL = () =>
   `${base_url}/${version}/${invoices}/?pagination=false`;
 
 export const invoiceURL = (id) => `${base_url}/${version}/${invoices}/${id}`;
 
-export const customerURL = (id) => `${base_url}/${version}/${customers}/${id}`;
+export const customerURLWithoutId = () =>
+  `${base_url}/${version}/${customers}/`;
 
 export const loginURL = (id) => `${base_url}/login_check`;

@@ -1,8 +1,6 @@
-import { login, logout } from "actions/userAction";
 import { loginURL } from "api/url";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { useDispatch } from "react-redux";
 
 const authenticate = (credentials) => {
   return axios.post(loginURL(), credentials).then((token) => {

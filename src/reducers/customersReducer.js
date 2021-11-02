@@ -1,7 +1,9 @@
 const initState = {
   usersCustomers: [],
+  usersCustomer: {},
   totalCustomers: 0,
   invoices: [],
+
   totalInvoices: 0,
   searchedCustomers: [],
   searchedInvoices: [],
@@ -15,6 +17,11 @@ const customersReducer = (state = initState, action) => {
         usersCustomers: action.payload.usersCustomers,
         searchedCustomers: action.payload.usersCustomers,
         totalCustomers: action.payload.totalCustomers,
+      };
+    case "FETCH_CUSTOMER":
+      return {
+        ...state,
+        usersCustomer: action.payload.usersCustomer,
       };
     case "DELETE_CUSTOMERS":
       return {

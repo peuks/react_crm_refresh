@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "./components/layout/navigation/NavBar/NavBar";
 import ROUTES, { RenderRoutes } from "routes";
-import { setup } from "services/authApi";
 import useLogin from "hooks/useLogin";
 
 const App = () => {

@@ -1,5 +1,3 @@
-import useSearch from "hooks/useSearch";
-
 const Search = ({ handleSearch, userInput }) => {
   return (
     <>

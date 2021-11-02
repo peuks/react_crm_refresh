@@ -1,6 +1,7 @@
 import { numberWithSpaces, roundedNumber } from "../../../utils";
 import tw from "tailwind-styled-components";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // export default Table;
 
@@ -29,7 +30,7 @@ const renderData = (customers) => {
               <th className="px-6 py-3 text-xs font-semibold text-center uppercase align-middle whitespace-nowrap border border-r-0 border-l-0 border-solid bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                 Montant total
               </th>
-              <th className="hidden px-6 py-3 text-xs font-semibold text-center uppercase align-middle whitespace-nowrap border border-r-0 border-l-0 border-solid  lg:block bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+              <th className="hidden px-6 py-3 text-xs font-semibold text-center uppercase align-middle whitespace-nowrap border border-r-0 border-l-0 border-solid lg:block bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                 Action
               </th>
             </tr>
@@ -57,6 +58,18 @@ const renderData = (customers) => {
                       {numberWithSpaces(roundedNumber(e.totalAmount))} €
                     </td>
                     <td className="hidden p-4 px-6 text-xs whitespace-nowrap border-t-0 border-r-0 border-l-0 lg:block align-center">
+                      <Link
+                        to={{
+                          pathname: `/customers/${e.id}`,
+                          state: {
+                            data: e,
+                          },
+                        }}
+                        className={`px-4 py-2 mr-1 mb-1 text-xs font-bold text-white uppercase bg-purple-500 rounded shadow transition-all duration-150 ease-linear outline-none active:bg-purple-600 hover:shadow-md focus:outline-none`}
+                        type="button"
+                      >
+                        Editer
+                      </Link>
                       <button
                         className={` text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 bg-red-500  ${
                           e.invoices.length > 0
@@ -82,7 +95,7 @@ const renderData = (customers) => {
 
 const Table = ({ customers }) => {
   const [currentPage, setcurrentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(10);
 
   const [pageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
@@ -129,7 +142,7 @@ const Table = ({ customers }) => {
     if (currentPage >= 2) {
       setcurrentPage(currentPage - 1);
 
-      if ((currentPage - 1) % pageNumberLimit == 0) {
+      if ((currentPage - 1) % pageNumberLimit === 0) {
         setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
         setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
       }
@@ -137,9 +150,9 @@ const Table = ({ customers }) => {
   };
 
   // Not used here
-  const handleLoadMore = () => {
-    setitemsPerPage(itemsPerPage + 5);
-  };
+  // const handleLoadMore = () => {
+  //   setitemsPerPage(itemsPerPage + 5);
+  // };
 
   return (
     <>

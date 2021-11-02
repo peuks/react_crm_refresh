@@ -5,7 +5,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 
 import App from "./App";
-import NavBar from "./components/layout/navigation/NavBar/NavBar";
 
 // Redux setup
 import { createStore, applyMiddleware } from "redux";
