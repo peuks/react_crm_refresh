@@ -7,6 +7,17 @@ module.exports = {
     },
   },
   webpack: {
+    configure: {
+      module: {
+        rules: [
+          {
+            type: "javascript/auto",
+            test: /\.mjs$/,
+            include: /node_modules/,
+          },
+        ],
+      },
+    },
     alias: {
       "@components": path.resolve(__dirname, "src/components/"),
       "@routes": path.resolve(__dirname, "src/routes/"),

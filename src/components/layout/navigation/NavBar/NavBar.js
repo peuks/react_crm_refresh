@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "actions/userAction";
 import { resetCustomers, resetInvoices } from "actions/customersActions";
 import { useHistory } from "react-router";
+import { motion } from "framer-motion";
+import { fade } from "animations";
 
 const NavBar = () => {
   const path = [
@@ -36,14 +38,14 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="bg-white shadow dark:bg-gray-800">
+      <nav className="sticky top-0 z-20 bg-white shadow dark:bg-gray-800">
         <div className="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
           <div className="flex justify-between items-center">
-            <div>
+            <motion.div variants={fade}>
               <LinkNavigation logo={true} path="/">
                 SymReact
               </LinkNavigation>
-            </div>
+            </motion.div>
             <div className="hidden items-center md:flex">
               <div className="flex flex-col md:flex-row md:mx-6">
                 {path.map((e) => {

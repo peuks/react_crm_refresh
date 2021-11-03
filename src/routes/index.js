@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { CustomerAdd, Customers, Home2, Invoices, Login } from "@pages";
 import { useSelector } from "react-redux";
-
+import { useLocation } from "react-router-dom";
 const ROUTES = [
   {
     path: "/",
@@ -80,9 +80,9 @@ function RouteWithSubRoutes(route) {
 /**
  * Use this component for any new section of routes (any config object that has a "routes" property
  */
-export function RenderRoutes({ routes }) {
+export function RenderRoutes({ routes, location }) {
   return (
-    <Switch>
+    <Switch location={location} key={location.pathname}>
       {routes.map((route, i) => {
         return <RouteWithSubRoutes key={route.key} {...route} />;
       })}

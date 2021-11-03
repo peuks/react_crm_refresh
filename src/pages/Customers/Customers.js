@@ -1,15 +1,17 @@
+import { fade } from "animations";
 import { Table, Search } from "components/layout";
+import { motion } from "framer-motion";
 import useCustomers from "hooks/useCustomers";
 import useSearch from "hooks/useSearch";
 import { IoAddCircle } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
+import tw from "tailwind-styled-components/dist/tailwind";
 const Customers = () => {
   const { usersCustomers, searchedCustomers } = useCustomers();
   const { handleSearch, userInput, setUserInput } = useSearch(usersCustomers);
 
   return (
-    <div className="container p-5 m-4 mx-auto my-8 w-full text-center bg-white rounded-xl border-2 border-gray-300 border-dashed">
+    <Container animate="show" exit="exit" initial="hidden" variants={fade}>
       <div className="flex justify-between items-start">
         <h1 className="pb-8 text-4xl">Liste des clients</h1>
         <Link
@@ -30,8 +32,11 @@ const Customers = () => {
       />
 
       {searchedCustomers && <Table customers={searchedCustomers} />}
-    </div>
+    </Container>
   );
 };
 
+const Container = tw(
+  motion.main
+)`container p-5 m-4 mx-auto my-8 w-full text-center bg-white rounded-xl border-2 border-gray-300 border-dashed`;
 export default Customers;

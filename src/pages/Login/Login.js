@@ -1,5 +1,7 @@
 import { loadCustomers, loadInvoices } from "actions/customersActions";
 import { login } from "actions/userAction";
+import { fade, pageAnimation } from "animations";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -40,7 +42,7 @@ const Login = () => {
   isAuthenticated && history.push("/");
 
   return (
-    <div class="flex relative flex-col flex-grow justify-center items-center bg-gray-100">
+    <LoginContainer animate="show" exit="exit" initial="hidden" variants={fade}>
       <div class="relative w-full max-w-sm">
         <CardBlue />
         <CardRed />
@@ -132,7 +134,7 @@ const Login = () => {
           </form>
         </CardWhite>
       </div>
-    </div>
+    </LoginContainer>
   );
 };
 
@@ -144,6 +146,10 @@ const CardWhite = tw.div`relative px-6 py-4 w-full bg-gray-100 rounded shadow-md
 const Block = tw.div`
 mt-7`;
 
+const LoginContainer = tw(
+  motion.main
+)`flex relative flex-col flex-grow justify-center items-center bg-gray-100
+`;
 const ErrorMessage = ({ error }) => {
   return (
     <>
