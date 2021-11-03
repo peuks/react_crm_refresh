@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /**
  *
  * @param {*} data
  * @param {*} itemsPerPage
- * @param {*} maxPages
+ * @param {*} maxPages nb of buttons must be displayed
  * @returns
  */
-const usePagination = (data = [], itemsPerPage = 8, maxPages = 5) => {
+const usePagination = (data = [], itemsPerPage = 8, maxPages) => {
+  const [test, setTest] = useState();
+
+  useEffect(() => {
+    setTest(currentData());
+    goTO(1);
+  }, [data]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [index, setIndex] = useState(1);
   const maxPage = Math.ceil(data.length / itemsPerPage);
@@ -26,7 +33,7 @@ const usePagination = (data = [], itemsPerPage = 8, maxPages = 5) => {
   };
 
   const goTO = (e) => {
-    setCurrentPage(Number(e.target.id));
+    setCurrentPage(Number(e?.target?.id || e));
   };
 
   const prev = () => {
@@ -46,6 +53,8 @@ const usePagination = (data = [], itemsPerPage = 8, maxPages = 5) => {
     index,
     goTO,
     setCurrentPage,
+    test,
+    maxPage,
   };
 };
 

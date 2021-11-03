@@ -1,33 +1,35 @@
 import React from "react";
-
-const Button = ({ children = "N/A", type, classSub ,classSetup}) => {
-  let variant = "";
-  
-  switch (classSub) {
-    case "secondary":
-      variant = "bg-bookmark-white hover:bg-bookmark-purple hover:text-white";
-      break;
-
-    default:
-      variant =
-        "text-white bg-bookmark-purple hover:bg-bookmark-white hover:text-black";
-      break;
-  }
-
-  switch (type) {
-    case "nav":
-      type =
-        "px-7 py-3 text-white uppercase rounded-full bg-bookmark-red transition duration-300";
-      break;
-    default:
-      type = "px-6 py-3 rounded-full shadow-md transition duration-300";
-      break;
-  }
+import { Link } from "react-router-dom";
+import tw from "tailwind-styled-components/dist/tailwind";
+const Button = ({ to, label, svg, color = true }) => {
   return (
-    <button type="button" className={`${type} ${variant} ${classSetup}` }>
-      {children}
-    </button>
+    <ButtonStyled type="button" color={color} to={to}>
+      <div class="flex gap-2 items-center">
+        {svg && svg}
+        {label}
+      </div>
+    </ButtonStyled>
   );
 };
 
+const ButtonStyled = tw(Link)`
+${(p) =>
+  p.color === "blue" ? "text-white bg-red-500" : "text-white bg-purple-500"}
+px-6
+py-3
+mr-1
+mb-1
+text-sm
+font-bold
+uppercase
+rounded
+shadow
+transition-all
+duration-150
+ease-linear
+outline-none
+active:bg-purple-600
+hover:shadow-lg
+focus:outline-none
+`;
 export default Button;

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { allCustomersURL, customersURL } from "api/url";
+import { getCustomersFromApi } from "api/handler";
 
-// Action Creator
 /**
- * Fetch Data and distpath an object with a type of FESTCH_GAME
+ *
+ * @param {*} id
  * @returns
  */
 export const loadCustomer = (id) => async (dispatch) => {
@@ -23,8 +24,7 @@ export const loadCustomer = (id) => async (dispatch) => {
  */
 export const loadCustomers = () => async (dispatch) => {
   //FETCH AXIOS
-  const allCustomers = await axios.get(allCustomersURL());
-
+  const allCustomers = await getCustomersFromApi();
   dispatch({
     type: "FETCH_CUSTOMERS",
     payload: {
@@ -71,7 +71,7 @@ export const deleteCustomer = (id, customers) => async (dispatch) => {
  */
 export const setLoadCustomers = (toggle) => async (dispatch) => {
   dispatch({
-    type: "LOADED_CUSTOMER",
+    type: "LOADED_INVOICE",
     payload: {
       hasLoaded: toggle,
     },
