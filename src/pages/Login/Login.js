@@ -100,15 +100,15 @@ const Login = () => {
               <Button color="text-white bg-blue-500">Login</Button>
             </Block>
 
-            <div class="flex items-center mt-7 text-center">
-              <hr class="w-full rounded-md border-gray-300 border-1" />
+            <div class="mt-7 flex-center">
+              <Line />
               <label class="block w-full text-sm font-medium text-gray-600">
                 Accede con
               </label>
               <hr class="w-full rounded-md border-gray-300 border-1" />
             </div>
 
-            <div class="flex justify-center mt-7 w-full">
+            <div class="mt-7 w-full flex-center">
               <button class="px-4 py-2 mr-5 text-white bg-blue-500 rounded border-none shadow-xl transition duration-500 ease-in-out transform cursor-pointer hover:shadow-inner hover:-translate-x hover:scale-105">
                 Facebook
               </button>
@@ -119,7 +119,7 @@ const Login = () => {
             </div>
 
             <Block>
-              <div class="flex justify-center items-center">
+              <div class="flex-center">
                 <label class="mr-2">¿Eres nuevo?</label>
                 <Link
                   to="/"
@@ -136,6 +136,7 @@ const Login = () => {
   );
 };
 
+const Line = tw.hr`w-full rounded-md border-gray-300 border-1`;
 const Input = tw.input` px-4 mt-1 w-full h-11 bg-gray-100 rounded border-none shadow-lg outline-none hover:bg-blue-100 focus:bg-blue-100 focus:ring-0`;
 const CardRed = tw.div` absolute w-full h-full bg-red-400 rounded shadow-lg transform rotate-6 card`;
 const CardBlue = tw.div` absolute w-full h-full bg-blue-400 rounded shadow-lg transform -rotate-6 card`;

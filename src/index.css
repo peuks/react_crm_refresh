@@ -3,3 +3,10 @@
 @tailwind components;
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+.flex-center {
+  @apply flex justify-center items-center text-center;
+}
+.login__title {
+  @apply block mt-3 text-sm font-semibold text-center;
+}
