@@ -1,10 +1,5 @@
 import axios from "axios";
-import {
-  allCustomersURL,
-  customersURL,
-  invoicesURL,
-  invoiceURL,
-} from "api/url";
+import { allCustomersURL, customersURL } from "api/url";
 
 // Action Creator
 /**
@@ -68,57 +63,23 @@ export const deleteCustomer = (id, customers) => async (dispatch) => {
     },
   });
 };
-/**
- * Fetch Data and distpath an object with a type of FESTCH_GAME
- * @returns
- */
-export const loadInvoices = () => async (dispatch) => {
-  //FETCH AXIOS
-  const invoices = await axios.get(invoicesURL());
-  // const newGamesData = await axios.get(newGamesURL());
-  // const upcomingData = await axios.get(upcomingGamesURL());
-  dispatch({
-    type: "FETCH_INVOICES",
-    payload: {
-      invoices: invoices.data["hydra:member"],
-      totalInvoices: invoices.data["hydra:totalItems"],
-    },
-  });
-};
 
-export const resetInvoices = () => async (dispatch) => {
+/**
+ *
+ * @param {*} toggle
+ * @returns true | false
+ */
+export const setLoadCustomers = (toggle) => async (dispatch) => {
   dispatch({
-    type: "RESET_INVOICES",
+    type: "LOADED_CUSTOMER",
+    payload: {
+      hasLoaded: toggle,
+    },
   });
 };
 
 export const resetCustomers = () => async (dispatch) => {
   dispatch({
     type: "RESET_CUSTOMERS",
-  });
-};
-
-export const invoicesSearch = (result) => async (dispatch) => {
-  dispatch({
-    type: "SEARCHED_INVOICES",
-    payload: {
-      searchedInvoices: result,
-    },
-  });
-};
-
-export const deleteInvoice = (id, invoices) => async (dispatch) => {
-  const { status } = await axios.delete(invoiceURL(id));
-  console.log(invoices, invoices.length);
-  const filtered = invoices.filter((invoices) => invoices.id !== id);
-  console.log(filtered.length);
-  // console.log(filtered.length);
-
-  // console.log(invoices);
-  dispatch({
-    type: "DELETE_INVOICE",
-    payload: {
-      searchedInvoices: status === 204 ? filtered : invoices,
-    },
   });
 };

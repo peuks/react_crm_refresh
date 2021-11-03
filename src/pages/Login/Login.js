@@ -1,4 +1,5 @@
-import { loadCustomers, loadInvoices } from "actions/customersActions";
+import { loadCustomers, setLoadCustomers } from "actions/customersActions";
+import { loadInvoices, setLoadInvoice } from "actions/invoicesActions";
 import { login } from "actions/userAction";
 import { fade, pageAnimation } from "animations";
 import { motion } from "framer-motion";
@@ -32,6 +33,8 @@ const Login = () => {
       dispatch(login());
       dispatch(loadInvoices());
       dispatch(loadCustomers());
+      dispatch(setLoadInvoice(true));
+      dispatch(setLoadCustomers(true));
       history.replace("/");
     } catch (error) {
       setError("Wrong password or Email");

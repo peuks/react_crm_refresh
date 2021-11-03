@@ -2,9 +2,9 @@ import React from "react";
 import useInvoices from "hooks/useInvoices";
 import Table2 from "components/layout/table2/Table2";
 import { useDispatch } from "react-redux";
-import { deleteInvoice } from "actions/customersActions";
 import { motion } from "framer-motion";
 import { fade } from "animations";
+import { deleteInvoice } from "actions/invoicesActions";
 
 const Invoices2 = () => {
   const { searchedInvoices } = useInvoices();

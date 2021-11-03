@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 import { logOut } from "services/authApi";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "actions/userAction";
-import { resetCustomers, resetInvoices } from "actions/customersActions";
 import { useHistory } from "react-router";
 import { motion } from "framer-motion";
 import { fade } from "animations";
+import { resetInvoices, setLoadInvoice } from "actions/invoicesActions";
+import { resetCustomers, setLoadCustomers } from "actions/customersActions";
 
 const NavBar = () => {
   const path = [
@@ -32,6 +33,8 @@ const NavBar = () => {
     dispatch(logout());
     dispatch(resetInvoices());
     dispatch(resetCustomers());
+    dispatch(setLoadInvoice(false));
+    dispatch(setLoadCustomers(false));
 
     history.push("/login");
   };

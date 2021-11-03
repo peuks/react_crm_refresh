@@ -1,4 +1,4 @@
-import { loadInvoices } from "actions/customersActions";
+import { loadInvoices } from "actions/invoicesActions";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 

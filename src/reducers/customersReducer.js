@@ -3,6 +3,7 @@ const initState = {
   usersCustomer: {},
   totalCustomers: 0,
   invoices: [],
+  hasLoaded: false,
 
   totalInvoices: 0,
   searchedCustomers: [],
@@ -11,12 +12,19 @@ const initState = {
 
 const customersReducer = (state = initState, action) => {
   switch (action.type) {
+    case "LOADED_CUSTOMER":
+      return {
+        ...state,
+        hasLoaded: action.payload.hasLoaded,
+      };
+
     case "FETCH_CUSTOMERS":
       return {
         ...state,
         usersCustomers: action.payload.usersCustomers,
         searchedCustomers: action.payload.usersCustomers,
         totalCustomers: action.payload.totalCustomers,
+        hasLoaded: true,
       };
     case "FETCH_CUSTOMER":
       return {
