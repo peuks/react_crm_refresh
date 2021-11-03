@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import NavBar from "./components/layout/navigation/NavBar/NavBar";
-import ROUTES, { RenderRoutes } from "routes";
 import useLogin from "hooks/useLogin";
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router";
+import ROUTES from "routes";
+import RenderRoutes from "components/routing/RenderRoutes";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

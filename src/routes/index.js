@@ -1,8 +1,13 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { CustomerAdd, Customers, Home2, Invoices, Login } from "@pages";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import {
+  CustomerAdd,
+  Customers,
+  Customers2,
+  Home2,
+  Invoices,
+  Login,
+} from "@pages";
+import RenderRoutes from "components/routing/RenderRoutes";
 const ROUTES = [
   {
     path: "/",
@@ -22,6 +27,13 @@ const ROUTES = [
         exact: true,
         protected: true,
         component: () => <Customers />,
+      },
+      {
+        path: "/customers2",
+        key: "APP_CUSTOMERS",
+        exact: true,
+        protected: true,
+        component: () => <Customers2 />,
       },
       {
         path: "/invoices",
@@ -55,39 +67,4 @@ const ROUTES = [
   },
 ];
 
-/**
- * Render a route with potential sub routes
- * https://reacttraining.com/react-router/web/example/route-config
- */
-function RouteWithSubRoutes(route) {
-  const { isAuthenticated } = useSelector((state) => state.user);
-
-  return (
-    <Route
-      path={route.path}
-      exact={route.exact}
-      render={(props) =>
-        (route.protected && isAuthenticated) || !route.protected ? (
-          <route.component {...props} routes={route.routes} />
-        ) : (
-          <Redirect to="/" />
-        )
-      }
-    />
-  );
-}
-
-/**
- * Use this component for any new section of routes (any config object that has a "routes" property
- */
-export function RenderRoutes({ routes, location }) {
-  return (
-    <Switch location={location} key={location.pathname}>
-      {routes.map((route, i) => {
-        return <RouteWithSubRoutes key={route.key} {...route} />;
-      })}
-      <Route component={() => <h1>Not Found!</h1>} />
-    </Switch>
-  );
-}
 export default ROUTES;
