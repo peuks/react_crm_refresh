@@ -6,7 +6,12 @@ const SectionHeader = () => {
   return (
     <Header>
       <H1>Liste des clients</H1>
-      <Button to="/customers2" label="New Client" color="red" svg={<Plus />} />
+      <Button
+        to="/customers/new"
+        label="New Client"
+        color="red"
+        svg={<Plus />}
+      />
     </Header>
   );
 };

@@ -29,12 +29,11 @@ const useSearch = (usersCustomers) => {
       usersCustomers
         .filter(
           (word) =>
-            word.company.toLowerCase().includes(userInput.toLowerCase()) ||
-            word.email.toLowerCase().includes(userInput.toLowerCase()) ||
-            word.firstName.toLowerCase().includes(userInput.toLowerCase()) ||
-            word.lastName.toLowerCase().includes(userInput) ||
-            word.totalAmount >= userInput ||
-            word.id === userInput
+            (word.company.toLowerCase().search(userInput.toLowerCase()) ||
+              word.email.toLowerCase().search(userInput.toLowerCase()) ||
+              word.firstName.toLowerCase().search(userInput.toLowerCase()) ||
+              word.lastName.toLowerCase().search(userInput) ||
+              word.totalAmount >= userInput) != -1 || word.id === userInput
         )
         .sort()
         .splice(0, 5)

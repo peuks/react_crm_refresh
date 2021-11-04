@@ -52,7 +52,7 @@ const Pagination = ({
         {[...Array(maxPages).keys()]
           .map((x) => x + index)
           .map((currElement) => {
-            return currElement + 1 < maxPage ? (
+            return currElement < maxPage + 1 ? (
               <button
                 onClick={goTO}
                 id={currElement}

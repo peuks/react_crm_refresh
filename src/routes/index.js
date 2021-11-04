@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  CustomerAdd,
-  Customers,
-  Customers2,
-  Home2,
-  Invoices,
-  Login,
-} from "@pages";
+import { CustomerAdd, Customers, Home2, Invoices, Login } from "@pages";
 import RenderRoutes from "components/routing/RenderRoutes";
+import InvoiceAdd from "pages/Invoices/InvoiceAdd";
 const ROUTES = [
   {
     path: "/",
@@ -29,13 +23,6 @@ const ROUTES = [
         component: () => <Customers />,
       },
       {
-        path: "/customers2",
-        key: "APP_CUSTOMERS",
-        exact: true,
-        protected: true,
-        component: () => <Customers2 />,
-      },
-      {
         path: "/invoices",
         key: "APP_INVOICES",
         exact: true,
@@ -48,6 +35,13 @@ const ROUTES = [
         exact: true,
         protected: true,
         component: () => <CustomerAdd />,
+      },
+      {
+        path: "/invoices/:id",
+        key: "APP_INVOICES_ADD",
+        exact: true,
+        protected: true,
+        component: () => <InvoiceAdd />,
       },
       {
         path: "/login",

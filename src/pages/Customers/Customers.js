@@ -1,36 +1,63 @@
-import { Table, Search } from "components/layout";
+import useCount from "hooks/useCount";
 import useCustomers from "hooks/useCustomers";
+import usePagination from "hooks/usePagination";
+import tw from "tailwind-styled-components/dist/tailwind";
+import SearchBar from "./Sections/SearchBar";
+import SectionHeader from "./Sections/SectionHeader";
+import TableCustomers from "./TableCustomers";
+import Pagination from "./Sections/Pagination";
+import { useState } from "react";
 import useSearch from "hooks/useSearch";
-import { IoAddCircle } from "react-icons/io5";
-import { Link } from "react-router-dom";
-
+import { Main } from "components/styles/Main";
 const Customers = () => {
+  /*********************
+   * GET ALL CUSTOMERS *
+   *********************/
   const { usersCustomers, searchedCustomers } = useCustomers();
+  const [maxButtons] = useState(10);
+  /**************
+   * PAGINATION *
+   **************/
+  // set count
+  const { count } = useCount(80);
+
   const { handleSearch, userInput, setUserInput } = useSearch(usersCustomers);
 
+  const {
+    currentPage,
+    currentData,
+    next,
+    prev,
+    index,
+    goTO,
+    maxPage,
+  } = usePagination(searchedCustomers, count, maxButtons);
+  const filteredData = currentData();
+
+  /***************************************
+   * SEND THE FILTERED DATA TO THE TABLE *
+   ***************************************/
   return (
-    <div className="container p-5 m-4 mx-auto my-8 w-full text-center bg-white rounded-xl border-2 border-gray-300 border-dashed">
-      <div className="flex justify-between items-start">
-        <h1 className="pb-8 text-4xl">Liste des clients</h1>
-        <Link
-          to="/customers/new"
-          class="px-6 py-3 mr-1 mb-1 text-sm font-bold text-white uppercase bg-purple-500 rounded shadow transition-all duration-150 ease-linear outline-none active:bg-purple-600 hover:shadow-lg focus:outline-none"
-          type="button"
-        >
-          <div className="flex gap-2 items-center">
-            <IoAddCircle size={"1.2rem"} /> New Client
-          </div>
-        </Link>
-      </div>
-      <Search
+    <Main>
+      <SectionHeader />
+      <SearchBar
         setUserInput={setUserInput}
         usersCustomers={usersCustomers}
         handleSearch={handleSearch}
         userInput={userInput}
       />
-
-      {searchedCustomers && <Table customers={searchedCustomers} />}
-    </div>
+      <TableCustomers customers={filteredData} />
+      <Pagination
+        next={next}
+        prev={prev}
+        currentPage={currentPage}
+        maxPages={maxButtons}
+        itemsPerPage={count}
+        index={index}
+        goTO={goTO}
+        maxPage={maxPage}
+      />
+    </Main>
   );
 };
 
