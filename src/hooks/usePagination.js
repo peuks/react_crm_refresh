@@ -25,6 +25,9 @@ const usePagination = (data = [], itemsPerPage = 8, maxPages) => {
     return data.length > 0 ? data.slice(begin, end) : [];
   };
 
+  /**
+   * @return Int
+   */
   const next = () => {
     setCurrentPage((currentPage) => Math.min(currentPage + 1, maxPage));
     currentPage + 1 - maxPages > 0 &&

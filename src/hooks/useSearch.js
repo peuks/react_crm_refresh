@@ -23,23 +23,47 @@ const useSearch = (usersCustomers) => {
     [userInput]
   );
 
+  /**
+   *
+   * @param {*} userInput
+   * @returns
+   */
   const getSearchResult = (userInput) => {
     return (
       usersCustomers.length > 0 &&
       usersCustomers
         .filter(
           (word) =>
-            (word.company.toLowerCase().search(userInput.toLowerCase()) ||
-              word.email.toLowerCase().search(userInput.toLowerCase()) ||
-              word.firstName.toLowerCase().search(userInput.toLowerCase()) ||
-              word.lastName.toLowerCase().search(userInput) ||
-              word.totalAmount >= userInput) != -1 || word.id === userInput
+            (
+              word.firstName.toLowerCase() +
+              " " +
+              word.lastName.toLowerCase()
+            ).includes(userInput.toLowerCase()) ||
+            (
+              word.lastName.toLowerCase() +
+              " " +
+              word.firstName.toLowerCase()
+            ).includes(userInput.toLowerCase()) ||
+            (
+              word.firstName.toLowerCase() + word.lastName.toLowerCase()
+            ).includes(userInput.toLowerCase()) ||
+            (
+              word.lastName.toLowerCase() + word.firstName.toLowerCase()
+            ).includes(userInput.toLowerCase()) ||
+            word.company.toLowerCase().includes(userInput.toLowerCase()) ||
+            word.email.toLowerCase().includes(userInput.toLowerCase()) ||
+            word.firstName.toLowerCase().includes(userInput.toLowerCase()) ||
+            word.lastName.toLowerCase().includes(userInput) ||
+            word.totalAmount >= userInput ||
+            word.id === userInput
         )
         .sort()
-        .splice(0, 5)
     );
   };
-
+  /**
+   *
+   * @param {*} value
+   */
   const handleSearch = (value) => {
     const input = value.target.value;
     setUserInput(input);

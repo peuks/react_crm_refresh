@@ -14,12 +14,12 @@ const Customers = () => {
    * GET ALL CUSTOMERS *
    *********************/
   const { usersCustomers, searchedCustomers } = useCustomers();
-  const [maxButtons] = useState(10);
+  const [maxButtons] = useState(4);
   /**************
    * PAGINATION *
    **************/
   // set count
-  const { count } = useCount(80);
+  const { count } = useCount(3);
 
   const { handleSearch, userInput, setUserInput } = useSearch(usersCustomers);
 

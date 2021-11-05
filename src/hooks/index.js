@@ -3,7 +3,6 @@ import useLogin2 from "./useLogin";
 import useScroll from "./useScroll";
 import useTimeout from "./useTimeout";
 import useCount from "./useCount";
-import useFetchData from "./useFetchData";
 import useLogin from "./useLogin";
 import useSearch from "./useSearch";
 import useCustomers from "./useCustomers";
@@ -16,7 +15,6 @@ export {
   useScroll,
   useTimeout,
   useCount,
-  useFetchData,
   useLogin,
   useSearch,
   useCustomers,

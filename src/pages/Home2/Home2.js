@@ -62,8 +62,8 @@ const Home2 = () => {
           class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2"
         >
           <img
-            class="object-cover w-full h-56 sm:h-72 md:h-96 lg:w-full lg:h-full"
-            src="https://source.unsplash.com/featured/?{office},{work}"
+            class="object-cover w-full h-56 sm:h-72 md:h-96 lg:h-full"
+            src="http://unsplash.it/640/640?random&gravity=center"
             alt=""
           />
         </motion.div>
